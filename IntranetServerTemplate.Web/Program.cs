@@ -1,4 +1,4 @@
-using IntranetServerTemplate.Web.Data;
+using IntranetServerTemplate.Core.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using MudBlazor.Services;
