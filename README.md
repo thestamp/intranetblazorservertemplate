@@ -28,8 +28,13 @@ This is an *opinionated* intranet Line-of-business web application intranet temp
 - Microsoft Identity Platform 
 
 ## Planned Features
-- Microsoft Identify Platform - Authorization [MS Doc](https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/azure-active-directory-groups-and-roles?view=aspnetcore-6.0)
-
+- Microsoft Identify Platform - Authorization 
+    - [MS Doc](https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/azure-active-directory-groups-and-roles?view=aspnetcore-6.0) 
+    - [how to assign user to roles](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/add-application-portal-assign-users)) (note: app registration to manage app, enteprise application to manage user assignments )
+    - https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps
+    - https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles#roles-using-azure-ad-app-roles
+    - https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/5-WebApp-AuthZ/5-1-Roles/README.md
+    - https://docs.microsoft.com/en-us/azure/security/fundamentals/identity-management-best-practices
 ## How-To Wishlist
 
 - How to re-create this project from scratch 

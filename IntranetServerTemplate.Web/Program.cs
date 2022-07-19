@@ -23,6 +23,8 @@ builder.Services.AddControllersWithViews()
 
 builder.Services.AddAuthorization(options =>
 {
+    options.AddPolicy("FetchDataPolicy", policy =>
+        policy.RequireRole("FetchData.Access"));
     // By default, all incoming requests will be authorized according to the default policy
     options.FallbackPolicy = options.DefaultPolicy;
 });
