@@ -25,13 +25,29 @@ This is an *opinionated* intranet Line-of-business web application intranet temp
 # Features
 - Blazor Server
 - Azure AD Authentication using the Microsoft Identity Platform 
-
-## Planned Features
 - Microsoft Identity Platform 
 
+## Planned Features
+- Microsoft Identify Platform - Authorization [MS Doc](https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/azure-active-directory-groups-and-roles?view=aspnetcore-6.0)
+
 ## How-To Wishlist
-- Adding AppOptions to an existing Blazor Project
-- Adding AppOptions to an existing Console Project
+
+- How to re-create this project from scratch 
+    1. Creating Blazor App
+        - .NET 6
+        - Server
+        - Auth - Microsoft Identity Platform
+            - Add new Azure AD application right in the wizard 
+    2. Adding AppOptions
+    3. Adding Services via Core class library
+    4. Adding Razor CodeBehind
+    5. Adding Entity Framework CRUD
+    6. Adding Authorization
+
+
+## Out of scope
+- Adding Microsoft Identity Platform to existing asp.net app (out of scope, maybe seperate article?)
+
 
 ## External Articles
 - Using CodeBehind files for razor pages (Based on [this](https://medium.com/stories-by-progress/using-a-code-behind-approach-to-blazor-components-da6525f576cc))

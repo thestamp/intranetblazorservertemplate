@@ -1,7 +1,6 @@
 ﻿using IntranetServerTemplate.Core.Services;
 using Microsoft.AspNetCore.Components;
 
-
 namespace IntranetServerTemplate.Web.Pages
 {
     public class FetchDataBase: ComponentBase
