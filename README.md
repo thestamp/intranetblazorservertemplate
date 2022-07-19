@@ -33,4 +33,7 @@ This is an *opinionated* intranet Line-of-business web application intranet temp
 - Adding AppOptions to an existing Blazor Project
 - Adding AppOptions to an existing Console Project
 
+## External Articles
+- Using CodeBehind files for razor pages (Based on [this](https://medium.com/stories-by-progress/using-a-code-behind-approach-to-blazor-components-da6525f576cc))
+
 ## Feature Wishlist

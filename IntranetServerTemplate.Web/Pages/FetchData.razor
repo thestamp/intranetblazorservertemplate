@@ -1,7 +1,6 @@
 ﻿@page "/fetchdata"
+@inherits FetchDataBase
 @using IntranetServerTemplate.Core.Services
-
-@inject WeatherForecastService ForecastService
 
 <PageTitle>Weather forecast</PageTitle>
 
@@ -30,14 +29,4 @@ else
             <MudTablePager PageSizeOptions="new int[]{50, 100}" />
         </PagerContent>
     </MudTable>
-}
-
-
-@code {
-    private WeatherForecastService.WeatherForecastModel[]? forecasts;
-
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
-    }
 }
