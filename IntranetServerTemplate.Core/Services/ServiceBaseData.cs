@@ -7,7 +7,7 @@ using IntranetServerTemplate.Core.Data;
 
 namespace IntranetServerTemplate.Core.Services
 {
-    public class ServiceBaseData
+    public class ServiceBaseData : IDisposable
     {
         protected readonly DataContext Context;
 
@@ -19,6 +19,10 @@ namespace IntranetServerTemplate.Core.Services
         public async Task SaveChangesAsync()
         {
             await Context.SaveChangesAsync();
+        }
+        public void Dispose()
+        {
+            Context?.Dispose();
         }
     }
 }

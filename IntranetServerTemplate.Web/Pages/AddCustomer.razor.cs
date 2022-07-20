@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IntranetServerTemplate.Web.Pages
 {
-    public class AddCustomerBase : ComponentBase
+    public class AddCustomerBase : ComponentBase, IDisposable
     {
         [Inject] CustomerService CustomerService { get; set; }
         [Inject] NavigationManager NavigationManager { get; set; }
@@ -18,6 +18,11 @@ namespace IntranetServerTemplate.Web.Pages
             CustomerService.AddCustomer(customer);
             await CustomerService.SaveChangesAsync();
             NavigationManager.NavigateTo("customers");
+        }
+
+        public void Dispose()
+        {
+            CustomerService?.Dispose();
         }
     }
 }

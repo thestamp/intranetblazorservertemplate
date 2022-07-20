@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IntranetServerTemplate.Core.Data.Models
 {
-    public record Customer
+    public class Customer
     {
         [Key]
         public int Id { get; set; }

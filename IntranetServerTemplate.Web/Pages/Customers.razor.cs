@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IntranetServerTemplate.Web.Pages
 {
-    public class CustomersBase : ComponentBase
+    public class CustomersBase : ComponentBase, IDisposable
     {
         [Inject] CustomerService CustomerService { get; set; }
 
@@ -20,6 +20,11 @@ namespace IntranetServerTemplate.Web.Pages
         {
             var customerList = await CustomerService.GetCustomers().ToListAsync();
             customers = customerList.ToArray();
+        }
+
+        public void Dispose()
+        {
+            CustomerService?.Dispose();
         }
     }
 }
