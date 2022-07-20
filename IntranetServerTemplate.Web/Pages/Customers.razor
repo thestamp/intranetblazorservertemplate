@@ -1,0 +1,30 @@
+﻿@page "/customers"
+@inherits CustomersBase
+<h1>Customer List</h1>
+
+@if (customers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>
+        <a href="addcustomer">Add Customer</a>
+    </p>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var c in customers)
+        {
+            <tr>
+                <td><a title="Edit" href="editcustomer/@c.Id">@c.Name</a> </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

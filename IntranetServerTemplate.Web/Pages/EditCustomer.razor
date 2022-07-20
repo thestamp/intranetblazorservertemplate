@@ -1,0 +1,8 @@
+﻿@page "/editcustomer/{Id:int}"
+@inherits EditCustomerBase
+<h1>Edit Customer</h1>
+
+
+<input @bind="customer.Name"/>
+
+<button class="btn btn-primary" @onclick="EditCustomer">Save Changes</button>
