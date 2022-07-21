@@ -40,33 +40,17 @@ namespace IntranetServerTemplate.Web.Pages
             NavigationManager.NavigateTo("customers");
         }
 
-
-        //todo CONFIRM NO ISSUES with using AddTransient<DataContext>() with blazor server -
         /*
          * Support for UnitOfWork - https://docs.microsoft.com/en-us/aspnet/core/blazor/blazor-server-ef-core?view=aspnetcore-6.0
          * 1) In Program.cs, change builder.Services.AddDbContext to builder.Services.AddDbContextFactory
          *
          * 2) In Program.cs, We want each injected service to be its own instance, with their own datacontext:
          *  2.1) change builder.Services.AddDbContext to builder.Services.AddDbContextFactory
-         *  2.2) change all injected services using the DataContext from AddScoped to AddTransient
-         *  2.2) change/add the DataContext to be AddTransient (ex: builder.Services.AddTransient<DataContext>();)
          *
-         *
-         * 3) For the base service class
-         *  3.1) Have it inherit from IDisposable (ex: public class ServiceBaseData : IDisposable)
-         *  3.2) add the following Dispose() method:
-         *           public void Dispose()
-         *           {
-         *               Context?.Dispose();
-         *           }
-         *
-         * 4) For each blazor component using the affected service classes, do the following:
-         *   4.1) Have the Component inherit from IDisposable (ex: public class CustomersBase : ComponentBase, IDisposable)
-         *   4.2) add the following Dispose() method (change to include your service classes):
-         *           public void Dispose()
-         *           {
-         *               CustomerService?.Dispose();
-         *           }
+         * 3) use EditCustomer or AddCustomer codebehind as templates depending on your functional needs:
+         *  - for an example of a datacontext that exists for the lifetime of the page, use AddCustomer
+         *  - if you need a datacontext's lifecycle to only exist for a specific method, use EditCustomer's EditCustomer() example
+         *  Note: If needed, you can certainly have a datacontext that exists for the lifetime of the page, and have a seperate datacontext for a specific method 
          *
          */
     }
