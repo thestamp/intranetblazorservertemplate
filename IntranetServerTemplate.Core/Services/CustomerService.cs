@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IntranetServerTemplate.Core.Data;
 using IntranetServerTemplate.Core.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace IntranetServerTemplate.Core.Services
 {

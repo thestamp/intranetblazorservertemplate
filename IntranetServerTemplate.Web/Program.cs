@@ -25,10 +25,10 @@ builder.Services.AddControllersWithViews()
     .AddMicrosoftIdentityUI();
 
 //Entity Framework - https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-strings#aspnet-core
-builder.Services.AddDbContextFactory<DataContext>(options => 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("IntranetServerTemplateDataContext"), //get connection string
-    x => x.MigrationsAssembly("IntranetServerTemplate.Core")) //point the migrations engine to IntranetServerTemplate.Core 
-    );
+builder.Services.AddDbContextFactory<DataContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("IntranetServerTemplateDataContext"), //get connection string
+    x => x.MigrationsAssembly("IntranetServerTemplate.Core"))//point the migrations engine to IntranetServerTemplate.Core 
+);
 
 builder.Services.AddAuthorization(options =>
 {
@@ -43,11 +43,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor()
     .AddMicrosoftIdentityConsentHandler();
 builder.Services.AddSingleton<WeatherForecastService>();
-builder.Services.AddTransient<CustomerService>();
-builder.Services.AddTransient<DataContext>(); //todo CONFIRM NO ISSUES with using AddTransient<DataContext>() with blazor server -
-//                                              //transient makes it so that the dbcontext in one component does not change the data models on other components.
-//                                              //Scoped shares the same dbcontext across the user's session (we don't want this)
-//                                              //https://docs.microsoft.com/en-us/aspnet/core/blazor/blazor-server-ef-core?view=aspnetcore-6.0#database-access
+
 
 var app = builder.Build();
 

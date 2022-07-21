@@ -1,4 +1,5 @@
-﻿using IntranetServerTemplate.Core.Data.Models;
+﻿using IntranetServerTemplate.Core.Data;
+using IntranetServerTemplate.Core.Data.Models;
 using IntranetServerTemplate.Core.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
@@ -6,9 +7,11 @@ using Microsoft.EntityFrameworkCore;
 namespace IntranetServerTemplate.Web.Pages
 {
     //todo: support for concurrency conflict: https://github.com/dotnet/blazor-samples/blob/main/6.0/BlazorServerEFCoreSample/BlazorServerDbContextExample/Pages/EditContact.razor
-    public class EditCustomerBase : ComponentBase, IDisposable
+    //this is for when we want model isolation between each action.
+        //for a more shared datacontext data model approach, see AddCustomer.
+    public class EditCustomerBase : ComponentBase
     {
-        [Inject] CustomerService CustomerService { get; set; }
+        [Inject] IDbContextFactory<DataContext> contextFactory { get; set; }
         [Inject] NavigationManager NavigationManager { get; set; }
 
         [Parameter]
@@ -18,24 +21,25 @@ namespace IntranetServerTemplate.Web.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            customer = CustomerService.GetCustomers().First(i => i.Id == Id);
+            using var dataContext = contextFactory.CreateDbContext();
+            var service = new CustomerService(dataContext);
+
+            customer = service.GetCustomers().First(i => i.Id == Id);
 
         }
 
         protected async Task EditCustomer()
         {
-            var customerInDb = CustomerService.GetCustomers().First(i => i.Id == Id);
+            using var dataContext = contextFactory.CreateDbContext();
+            var service = new CustomerService(dataContext);
 
+            var customerInDb = service.GetCustomers().First(i => i.Id == Id);
+            customerInDb.Name = customer.Name;
+            await dataContext.SaveChangesAsync();
 
-            //todo find a way to save just the fields we want
-            await CustomerService.SaveChangesAsync();
             NavigationManager.NavigateTo("customers");
         }
 
-        public void Dispose()
-        {
-            CustomerService?.Dispose();
-        }
 
         //todo CONFIRM NO ISSUES with using AddTransient<DataContext>() with blazor server -
         /*
